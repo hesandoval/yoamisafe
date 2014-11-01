@@ -16,7 +16,7 @@ links = []
 
 dates = []
 
-data = {}
+
 
 counter = 0
 
@@ -25,7 +25,7 @@ for link in soup.findAll('table')[2].find_all('a'):
 
 ###
 ## From murder to reckless endangerement data
-###
+##
 def add_incident(latitude, longitude, date, description):
     i = Incident.objects.get_or_create(latitude=latitude, longitude=longitude, date=date, description=description)[0]
     return i
@@ -33,6 +33,7 @@ def add_incident(latitude, longitude, date, description):
 for link in range(0, 75):
 
     coordinates = []
+    data = {}
 
     page_html = urllib2.urlopen(links[link]).read()
     new_soup = BeautifulSoup(page_html)
@@ -45,6 +46,7 @@ for link in range(0, 75):
         if '.' not in x[0] or '.' not in x[1]:
             continue
         else:
+            print x
             coordinates.append((float(x[0]),float(x[1])))
 
     for date in new_soup.findAll('span', {'class': 'listing_label'}):
