@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'yhack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^yo', include('yoamisafe.urls', namespace='yoamisafe')),
-    url(r'^/admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
