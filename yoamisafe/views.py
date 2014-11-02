@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from yoamisafe.models import Incident
 import requests
 YO_API = "http://api.justyo.co/yo/"
 YO_API_TOKEN = "742a63e4-3aa2-4acd-a5dd-5540de7f415f"
@@ -17,5 +18,12 @@ def map(request):
     return HttpResponse(r.text)
 
 
-def temp(request):
+def displayMap(request, longitude, latitude, username):
+    context = {}
+    context['userLatitude'] = latitude
+    context['userLongitude'] = longitude
+    context['username'] = username
+    #latitude range = .0045
+
+
     return HttpResponse("Hello from temp")
